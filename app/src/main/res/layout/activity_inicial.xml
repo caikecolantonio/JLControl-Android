@@ -4,12 +4,55 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".InicialActivity">
+    tools:context=".InicialActivity"
+    android:background="@drawable/terno">
 
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="" />
+
+    <Button
+        android:id="@+id/button_medidas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medidas"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_shape"
+        android:shadowColor="#1B45A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/button_devolver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Devolver"
+        android:background="@drawable/button_shape"
+        android:shadowColor="#1B45A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:layout_marginTop="60dp"/>
+
+    <Button
+        android:id="@+id/button_encontrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Encontrar"
+        android:background="@drawable/button_shape"
+        android:shadowColor="#1B45A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:layout_marginTop="60dp"/>
 </LinearLayout>

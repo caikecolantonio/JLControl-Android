@@ -5,17 +5,26 @@
     android:orientation="vertical"
     android:background="@drawable/terno">
 
-
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bem Vindo, Faça seu Login:"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="46dp"/>
 
     <EditText
         android:id="@+id/txtLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="60"
         android:inputType="textPersonName"
         android:text="Faça Seu Login!!"
-        android:layout_marginTop="90dp"
-        android:background="@color/white"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="center_horizontal|center_vertical"
          />
 
 
@@ -27,7 +36,8 @@
         android:ems="10"
         android:text="Senha"
         android:layout_marginTop="90dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="center_horizontal|center_vertical"
         />
 
 
@@ -35,9 +45,15 @@
             android:id="@+id/botaologin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:text="Logar" />
-
+            android:layout_marginTop="120dp"
+            android:text="Logar"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#1B45A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -50,5 +66,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:background="@color/white"/>
+
 
 </LinearLayout>

@@ -11,16 +11,11 @@
     <item
         android:id="@+id/action_consultar"
         android:title="Consultar"
-        app:showAsAction="ifRoom"
-        />
-    <item
-        android:id="@+id/action_atualizar"
-        android:title="Atualizar"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         />
     <item
         android:id="@+id/action_sair"
         android:title="Sair"
-        app:showAsAction="ifRoom|withText"
+        app:showAsAction="never|withText"
         />
 </menu>

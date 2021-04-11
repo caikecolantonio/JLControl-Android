@@ -1,23 +1,31 @@
 package com.example.jlima
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 
-class LocarActivity : AppCompatActivity() {
+class AcaoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_locar)
+        setContentView(R.layout.activity_acao)
         // Get the support action bar
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // Set the action bar title, subtitle and elevation
-        actionBar!!.title = "Jlima"
-        actionBar.elevation = 4.0F
+        val newString: String?
+        newString = if (savedInstanceState == null) {
+            val extras = intent.extras
+            extras?.getString("titulo")
+        } else {
+            savedInstanceState.getSerializable("titulo") as String?
+        }
+        actionBar!!.title = newString;
     }
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu to use in the action bar
@@ -30,26 +38,23 @@ class LocarActivity : AppCompatActivity() {
         // Handle presses on the action bar menu items
         when (item.itemId) {
             R.id.action_locar -> {
-                startActivity(Intent(this@LocarActivity, LocarActivity::class.java))
+                startActivity(Intent(this@AcaoActivity, LocarActivity::class.java))
                 return true
             }
             R.id.action_consultar -> {
-                startActivity(Intent(this@LocarActivity, MainActivity::class.java))
+                startActivity(Intent(this@AcaoActivity, LocarActivity::class.java))
                 return true
             }
             R.id.action_sair -> {
-                startActivity(Intent(this@LocarActivity, MainActivity::class.java))
+                startActivity(Intent(this@AcaoActivity, MainActivity::class.java))
                 return true
             }
 
         }
         return super.onOptionsItemSelected(item)
-
-
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
 }
-
