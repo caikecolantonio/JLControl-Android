@@ -5,14 +5,21 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-abstract class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    var drawerLayout: DrawerLayout? = null
+    var toggle: ActionBarDrawerToggle? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
 
+        configuraMenuLateral()
         // Get the support action bar
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
@@ -42,7 +49,20 @@ abstract class InicialActivity : AppCompatActivity(), NavigationView.OnNavigatio
         buttonEncontrar.setOnClickListener {
             startActivity(intent_encontrar)
         }
+
+
     }
+
+    private fun configuraMenuLateral() {
+        val drawerLayout =DrawerLayout(findViewById(R.id.layoutMenuLateral));
+        val navOpenStr = R.string.drawer_abrir
+        val navCloseStr = R.string.drawer_fechar
+
+        drawerLayout.addDrawerListener(Teste)
+        toogle.syncState()
+        menu_lateral.setNavigationItemSelectedListener(this)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu to use in the action bar
@@ -74,5 +94,24 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
         onBackPressed()
         return true
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.id_locar -> {
+                Toast.makeText(this, "Clicou no Locar", Toast.LENGTH_SHORT).show()
+            }
+            R.id.id_consultar -> {
+                Toast.makeText(this, "Clicou Consultar", Toast.LENGTH_SHORT).show()
+            }
+            R.id.id_relatorios -> {
+                Toast.makeText(this, "Clicou Relatorios", Toast.LENGTH_SHORT).show()
+            }
+        }
+// fecha menu depois de tratar o evento
+        layoutMenuLateral.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+
 
 }

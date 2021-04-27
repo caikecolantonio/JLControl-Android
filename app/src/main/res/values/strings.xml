@@ -3,4 +3,6 @@
     <string name="action_buscar">Buscar</string>
     <string name="action_atualizar">Atualizar</string>
     <string name="action_config">Configurar</string>
+    <string name="drawer_abrir">Abrir</string>
+    <string name="drawer_fechar">Fechar</string>
 </resources>
