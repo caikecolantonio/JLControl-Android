@@ -1,5 +1,7 @@
 package com.example.jlima
 
+import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -7,19 +9,17 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_inicial.*
 
 class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    var drawerLayout: DrawerLayout? = null
-    var toggle: ActionBarDrawerToggle? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
 
-        configuraMenuLateral()
         // Get the support action bar
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
@@ -50,15 +50,16 @@ class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             startActivity(intent_encontrar)
         }
 
-
+        configuraMenuLateral()
     }
 
     private fun configuraMenuLateral() {
-        val drawerLayout =DrawerLayout(findViewById(R.id.layoutMenuLateral));
-        val navOpenStr = R.string.drawer_abrir
-        val navCloseStr = R.string.drawer_fechar
-
-        drawerLayout.addDrawerListener(Teste)
+        var toogle = ActionBarDrawerToggle(
+            this,
+            layoutMenuLateral,
+            R.string.drawer_abrir,
+            R.string.drawer_fechar)
+        layoutMenuLateral.addDrawerListener(toogle)
         toogle.syncState()
         menu_lateral.setNavigationItemSelectedListener(this)
     }
@@ -74,6 +75,9 @@ class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 override fun onOptionsItemSelected(item: MenuItem): Boolean {
     // Handle presses on the action bar menu items
     when (item.itemId) {
+        android.R.id.home -> {
+            layoutMenuLateral.openDrawer(GravityCompat.START)
+        }
         R.id.action_locar -> {
             startActivity(Intent(this@InicialActivity, LocarActivity::class.java))
             return true
@@ -90,10 +94,6 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
     }
     return super.onOptionsItemSelected(item)
 }
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
