@@ -6,8 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
 
-class InicialActivity : AppCompatActivity() {
+abstract class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
