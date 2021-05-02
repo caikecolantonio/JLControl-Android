@@ -11,10 +11,16 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_inicial.*
 
+
 class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val context: Context get() = this
+    private var varTernos = listOf<ListaTerno>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +57,28 @@ class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
 
         configuraMenuLateral()
+
+        recyclerTernos?.layoutManager = LinearLayoutManager(context)
+        recyclerTernos?.itemAnimator = DefaultItemAnimator()
+        recyclerTernos?.setHasFixedSize(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+// task para recuperar as disciplinas
+        taskDisciplinas()
+    }
+    fun taskDisciplinas() {
+        varTernos = TernoService.getDisciplinas(context)
+// atualizar lista
+        recyclerTernos?.adapter = TernoAdapter(varTernos) {onClickDisciplina(it)}
+    }
+    // tratamento do evento de clicar em uma disciplina
+    fun onClickDisciplina(disciplina: ListaTerno) {
+        Toast.makeText(context, "Clicou terno ${disciplina.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, TernoActivity::class.java)
+        intent.putExtra("disciplina", disciplina)
+        startActivity(intent)
     }
 
     private fun configuraMenuLateral() {
