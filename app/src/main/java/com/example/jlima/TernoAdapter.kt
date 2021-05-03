@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class TernoAdapter (
-    val disciplinas: List<ListaTerno>,
+    val ternos: List<ListaTerno>,
     val onClick: (ListaTerno) -> Unit):
     RecyclerView.Adapter<TernoAdapter.TernoViewHolder>() {
     // ViewHolder com os elementos da tela
@@ -27,8 +27,8 @@ class TernoAdapter (
             cardView = view.findViewById<CardView>(R.id.card_ternos)
         }
     }
-    // Quantidade de disciplinas na lista
-    override fun getItemCount() = this.disciplinas.size
+    // Quantidade de ternos na lista
+    override fun getItemCount() = this.ternos.size
     // inflar layout do adapter
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int): TernoViewHolder {
@@ -45,12 +45,12 @@ class TernoAdapter (
     override fun onBindViewHolder(holder: TernoViewHolder, position: Int) {
         val context = holder.itemView.context
 // recuperar objeto disciplina
-        val disciplina = disciplinas[position]
+        val terno = ternos[position]
 // atualizar dados de disciplina
-        holder.cardNome.text = disciplina.nome
+        holder.cardNome.text = terno.nome
         holder.cardProgress.visibility = View.VISIBLE
 // download da imagem
-        Picasso.with(context).load(disciplina.foto).fit().into(holder.cardImg,
+        Picasso.with(context).load(terno.foto).fit().into(holder.cardImg,
 
             object: com.squareup.picasso.Callback{
                 override fun onSuccess() {
@@ -62,6 +62,6 @@ class TernoAdapter (
             })
 
 // adiciona evento de clique
-        holder.itemView.setOnClickListener {onClick(disciplina)}
+        holder.itemView.setOnClickListener {onClick(terno)}
     }
 }

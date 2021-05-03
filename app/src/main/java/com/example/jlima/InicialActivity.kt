@@ -15,24 +15,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_inicial.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    private val context: Context get() = this
-    private var varTernos = listOf<ListaTerno>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
 
         // Get the support action bar
-        val actionBar = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "JLima"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // Set the action bar title, subtitle and elevation
-        actionBar!!.title = "JLima"
-        actionBar.elevation = 4.0F
 
         //BUTTON MUDAR TEXTO MEDIDAS
         val button = findViewById<Button>(R.id.button_medidas);
@@ -58,33 +54,20 @@ class InicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         configuraMenuLateral()
 
-        recyclerTernos?.layoutManager = LinearLayoutManager(context)
-        recyclerTernos?.itemAnimator = DefaultItemAnimator()
-        recyclerTernos?.setHasFixedSize(true)
     }
 
-    override fun onResume() {
-        super.onResume()
-// task para recuperar as disciplinas
-        taskDisciplinas()
-    }
-    fun taskDisciplinas() {
-        varTernos = TernoService.getDisciplinas(context)
-// atualizar lista
-        recyclerTernos?.adapter = TernoAdapter(varTernos) {onClickDisciplina(it)}
-    }
-    // tratamento do evento de clicar em uma disciplina
-    fun onClickDisciplina(disciplina: ListaTerno) {
-        Toast.makeText(context, "Clicou terno ${disciplina.nome}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, TernoActivity::class.java)
-        intent.putExtra("disciplina", disciplina)
-        startActivity(intent)
+    override fun onSupportNavigateUp(): Boolean {
+        if (layoutMenuLateral.isDrawerOpen(GravityCompat.START)) {
+            layoutMenuLateral.closeDrawer(GravityCompat.START)
+        }
+        return true
     }
 
     private fun configuraMenuLateral() {
         var toogle = ActionBarDrawerToggle(
             this,
             layoutMenuLateral,
+            toolbar,
             R.string.drawer_abrir,
             R.string.drawer_fechar)
         layoutMenuLateral.addDrawerListener(toogle)
@@ -111,7 +94,7 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
             return true
         }
         R.id.action_consultar -> {
-            startActivity(Intent(this@InicialActivity, LocarActivity::class.java))
+            startActivity(Intent(this@InicialActivity, ConsultarActivity::class.java))
             return true
         }
         R.id.action_sair -> {
@@ -125,15 +108,22 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.id_inicial -> {
+                startActivity(Intent(this@InicialActivity, InicialActivity::class.java))
+            }
             R.id.id_locar -> {
-                Toast.makeText(this, "Clicou no Locar", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@InicialActivity, LocarActivity::class.java))
             }
             R.id.id_consultar -> {
-                Toast.makeText(this, "Clicou Consultar", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@InicialActivity, ConsultarActivity::class.java))
             }
             R.id.id_relatorios -> {
                 Toast.makeText(this, "Clicou Relatorios", Toast.LENGTH_SHORT).show()
             }
+            R.id.id_logout -> {
+                startActivity(Intent(this@InicialActivity, MainActivity::class.java))
+            }
+
         }
 // fecha menu depois de tratar o evento
         layoutMenuLateral.closeDrawer(GravityCompat.START)

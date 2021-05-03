@@ -5,30 +5,34 @@
     android:id="@+id/layoutMenuLateral"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/terno"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@drawable/terno">
+
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".LocarActivity"
+        tools:context=".ConsultarActivity"
         android:background="@drawable/terno">
     <include layout="@layout/toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pagina de locação será implementada no futuro"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        <!-- Colocar cardview com as disciplinas-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTernos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
     </LinearLayout>
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/menu_lateral"
         android:layout_width="wrap_content"

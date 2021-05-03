@@ -7,23 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!-- Colocar cardview com as disciplinas-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerTernos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:cacheColorHint="@android:color/transparent"
-            android:clipToPadding="false"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:listSelector="@android:color/transparent"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical">
-        </androidx.recyclerview.widget.RecyclerView>
-    </ScrollView>
+
 
 
 <LinearLayout android:layout_width="match_parent"
@@ -31,7 +15,7 @@
     android:orientation="vertical"
     tools:context=".InicialActivity"
     android:background="@drawable/terno">
-
+    <include layout="@layout/toolbar"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -90,4 +74,6 @@
         app:headerLayout="@layout/menu_lateral_cabecalho"
         app:menu="@menu/menu_lateral">
     </com.google.android.material.navigation.NavigationView>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
