@@ -10,7 +10,7 @@ import java.net.URL
 import kotlin.random.Random
 
 object TernoService {
-    val host = "http://10.0.2.2:8000"
+    val host = "https://jlima-control.herokuapp.com"
     fun getTernos (context: Context): List<ListaTerno> {
         val url = "$host/trajes/"
 
