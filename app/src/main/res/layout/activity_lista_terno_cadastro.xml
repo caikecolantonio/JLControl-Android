@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".ListaTernoCadastroActivity">
+
+<EditText
+    android:id="@+id/codigoTerno"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Codigo"
+    android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/nomeTerno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="text" />
+
+<EditText
+    android:id="@+id/modeloTerno"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Modelo"
+    android:inputType="text" />
+
+<EditText
+    android:id="@+id/corteTerno"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Corte"
+    android:inputType="text"/>
+
+<EditText
+    android:id="@+id/valorTerno"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="Valor"
+    android:inputType="numberDecimal"/>
+
+    <Button
+    android:id="@+id/salvarTerno"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="salvar" />
+
+</LinearLayout>

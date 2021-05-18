@@ -68,8 +68,8 @@ class AcaoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             android.R.id.home -> {
                 layoutMenuLateral.openDrawer(GravityCompat.START)
             }
-            R.id.action_locar -> {
-                startActivity(Intent(this@AcaoActivity, LocarActivity::class.java))
+            R.id.adicionar_terno -> {
+                startActivity(Intent(this@AcaoActivity, ListaTernoCadastroActivity::class.java))
                 return true
             }
             R.id.action_consultar -> {
@@ -90,8 +90,8 @@ class AcaoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.id_inicial -> {
                 startActivity(Intent(this@AcaoActivity, InicialActivity::class.java))
             }
-            R.id.id_locar -> {
-                startActivity(Intent(this@AcaoActivity, LocarActivity::class.java))
+            R.id.id_add_terno -> {
+                startActivity(Intent(this@AcaoActivity, ListaTernoCadastroActivity::class.java))
             }
             R.id.id_consultar -> {
                 startActivity(Intent(this@AcaoActivity, ConsultarActivity::class.java))

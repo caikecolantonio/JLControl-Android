@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -49,14 +50,47 @@ class ConsultarActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         taskTernos()
     }
     fun taskTernos() {
-        varTernos = TernoService.getTernos(context)
-// atualizar lista
-        recyclerTernos?.adapter = TernoAdapter(varTernos) {onClickTerno(it)}
+        Thread {
+        // Código para procurar as trajes
+        // que será executado em segundo plano / Thread separada
+            varTernos = TernoService.getTernos(context)
+            runOnUiThread {
+                // Código para atualizar a UI com a lista de trajes
+                recyclerTernos?.adapter = TernoAdapter(varTernos) { onClickTerno(it)}
+            }
+        }.start()
     }
-    // tratamento do evento de clicar em uma disciplina
+
+
+    // tratamento do evento de clicar em um traje
     fun onClickTerno(ternoLista: ListaTerno) {
-        Toast.makeText(context, "Clicou terno ${ternoLista.nome}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Clicou terno ${ternoLista.codigo}", Toast.LENGTH_SHORT).show()
+        val codigo = ternoLista.codigo
+        // verificar qual item foi clicado
+        // remover a disciplina no WS
+        AlertDialog.Builder(this)
+        .setTitle(R.string.app_name)
+        .setMessage("Deseja excluir o terno?")
+        .setPositiveButton("Sim") {
+                dialog, which ->
+            dialog.dismiss()
+            taskExcluir(codigo)
+        }.setNegativeButton("Não") {
+                dialog, which -> dialog.dismiss()
+        }.create().show()
+        }
+    private fun taskExcluir(codigo: String) {
+        val terno = ListaTerno()
+        terno.codigo = codigo
+            Thread {
+                TernoService.delete(terno as ListaTerno)
+                runOnUiThread {
+                    // após remover, voltar para activity anterior
+                    startActivity(Intent(this@ConsultarActivity, ConsultarActivity::class.java))
+                }
+            }.start()
     }
+
 
     private fun configuraMenuLateral() {
         var toogle = ActionBarDrawerToggle(
@@ -69,6 +103,7 @@ class ConsultarActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toogle.syncState()
         menu_lateral.setNavigationItemSelectedListener(this)
     }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -84,8 +119,8 @@ class ConsultarActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             android.R.id.home -> {
                 layoutMenuLateral.openDrawer(GravityCompat.START)
             }
-            R.id.action_locar -> {
-                startActivity(Intent(this@ConsultarActivity, LocarActivity::class.java))
+            R.id.adicionar_terno -> {
+                startActivity(Intent(this@ConsultarActivity, ListaTernoCadastroActivity::class.java))
                 return true
             }
             R.id.action_consultar -> {
@@ -106,8 +141,8 @@ class ConsultarActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.id_inicial -> {
                 startActivity(Intent(this@ConsultarActivity, InicialActivity::class.java))
             }
-            R.id.id_locar -> {
-                startActivity(Intent(this@ConsultarActivity, LocarActivity::class.java))
+            R.id.id_add_terno -> {
+                startActivity(Intent(this@ConsultarActivity, ListaTernoCadastroActivity::class.java))
             }
             R.id.id_consultar -> {
                 startActivity(Intent(this@ConsultarActivity, ConsultarActivity::class.java))

@@ -89,8 +89,8 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
         android.R.id.home -> {
             layoutMenuLateral.openDrawer(GravityCompat.START)
         }
-        R.id.action_locar -> {
-            startActivity(Intent(this@InicialActivity, LocarActivity::class.java))
+        R.id.adicionar_terno -> {
+            startActivity(Intent(this@InicialActivity, ListaTernoCadastroActivity::class.java))
             return true
         }
         R.id.action_consultar -> {
@@ -111,8 +111,8 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean {
             R.id.id_inicial -> {
                 startActivity(Intent(this@InicialActivity, InicialActivity::class.java))
             }
-            R.id.id_locar -> {
-                startActivity(Intent(this@InicialActivity, LocarActivity::class.java))
+            R.id.id_add_terno -> {
+                startActivity(Intent(this@InicialActivity, ListaTernoCadastroActivity::class.java))
             }
             R.id.id_consultar -> {
                 startActivity(Intent(this@InicialActivity, ConsultarActivity::class.java))

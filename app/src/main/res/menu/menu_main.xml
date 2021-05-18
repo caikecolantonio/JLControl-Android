@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/action_locar"
+        android:id="@+id/adicionar_terno"
         android:icon="@drawable/ic_adicionar_white"
         app:showAsAction="always|withText"
-        android:title="Locar" />
+        android:title="Adicionar Terno" />
     <item
         android:id="@+id/action_consultar"
         android:icon="@drawable/ic_buscar_white"

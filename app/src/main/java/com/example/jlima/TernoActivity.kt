@@ -3,7 +3,9 @@ package com.example.jlima
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_terno.*
 import kotlinx.android.synthetic.main.menu_lateral_cabecalho.*
@@ -20,7 +22,7 @@ class TernoActivity : AppCompatActivity() {
         supportActionBar?.title = listaTerno?.nome
 // up navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-// atualizar dados do carro
+
         cardNome.text = listaTerno?.nome
         Picasso.with(this).load(listaTerno?.foto).fit().into(imagemuser,
 
@@ -28,6 +30,7 @@ class TernoActivity : AppCompatActivity() {
                 override fun onSuccess() {}
                 override fun onError() { }
             })
-
     }
+
+
 }

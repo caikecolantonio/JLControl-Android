@@ -10,16 +10,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/TemaJlima">
+        android:theme="@style/TemaJlima"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ListaTernoCadastroActivity"></activity>
         <activity
             android:name=".ConsultarActivity"
             android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".TernoActivity"
             android:theme="@style/AppTheme.Toolbar" />
-        <activity android:name=".AcaoActivity"
+        <activity
+            android:name=".AcaoActivity"
             android:theme="@style/AppTheme.Toolbar" />
-        <activity android:name=".LocarActivity"
+        <activity
+            android:name=".LocarActivity"
             android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".InicialActivity"
