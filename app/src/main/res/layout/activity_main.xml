@@ -42,7 +42,14 @@
         />
 
 
-        <Button
+    <CheckBox
+        android:id="@+id/checkLembrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lembrar login"
+        android:textColor="#FFFFFF" />
+
+    <Button
             android:id="@+id/botaologin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

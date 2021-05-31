@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.GsonBuilder
 import java.io.Serializable
 
+@Entity(tableName = "ListaTerno")
 class ListaTerno : Serializable {
     var ativo = ""
     var codigo = ""
