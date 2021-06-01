@@ -3,11 +3,13 @@ package com.example.jlima
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
@@ -79,11 +81,12 @@ class ConsultarActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 dialog, which -> dialog.dismiss()
         }.create().show()
         }
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun taskExcluir(codigo: String) {
         val terno = ListaTerno()
         terno.codigo = codigo
             Thread {
-                TernoService.delete(terno as ListaTerno)
+                TernoService.delete(terno as ListaTerno, context)
                 runOnUiThread {
                     // após remover, voltar para activity anterior
                     startActivity(Intent(this@ConsultarActivity, ConsultarActivity::class.java))

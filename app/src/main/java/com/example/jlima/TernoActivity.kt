@@ -24,12 +24,14 @@ class TernoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         cardNome.text = listaTerno?.nome
+        if(listaTerno?.foto != "offline"){
         Picasso.with(this).load(listaTerno?.foto).fit().into(imagemuser,
 
             object: com.squareup.picasso.Callback{
                 override fun onSuccess() {}
                 override fun onError() { }
             })
+        }
     }
 
 
