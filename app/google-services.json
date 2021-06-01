@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "885957305493",
+    "project_id": "notificacoes-terno",
+    "storage_bucket": "notificacoes-terno.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885957305493:android:f6632987499143cc26e79c",
+        "android_client_info": {
+          "package_name": "com.example.jlima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885957305493-bl5un0gd2qli02mkr35m4d47o0vj85d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxaffgpWA0WDXJD6upogPS8VBla7yuaQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885957305493-bl5un0gd2qli02mkr35m4d47o0vj85d6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
